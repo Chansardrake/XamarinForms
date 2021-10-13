@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MyPro2"
+             mc:Ignorable="d" Title="RATIONAL DIET"
+             x:Class="MyPro2.MainPage">
+
+    <ContentPage.Resources>
+        <local:CheckBoxStateConverter x:Key="chkStateCvt"/>
+    </ContentPage.Resources>
+    
+    <StackLayout>
+        <StackLayout Margin="20,20,20,20" x:Name="MainStack">
+            <Button Text="Daily Details"
+                Clicked="OnDailyDetails" />
+            <Entry x:Name="nameEntry"
+               Placeholder="Enter name" />
+            <Entry x:Name="ageEntry"
+               Placeholder="Enter age" />
+            <Entry x:Name="weightEntry"
+               Placeholder="Enter weight" />
+            <Button Text="Add new user"
+                Clicked="OnButtonClicked" />
+            <ListView x:Name="listView" SeparatorColor="Black" ItemTapped="listView_ItemTapped" Margin="0" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid Padding="0" Margin="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label FontSize="Medium" Text="{Binding Number}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label FontSize="Medium" Text="{Binding Name}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label FontSize="Medium" Text="{Binding Age}" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Label FontSize="Medium" Text="{Binding Weight}" Grid.Column="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout Margin="20,20,20,20" x:Name="SecondaryStack" IsVisible="False">
+            <Label Text="Today's Status" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Medium"/>
+            <StackLayout>
+                <Grid HeightRequest="60" BackgroundColor="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="Medium" Text="ID" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label FontSize="Medium" Text="Name" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label FontSize="Medium" Text="BF" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label FontSize="Medium" Text="L" Grid.Column="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label FontSize="Medium" Text="D" Grid.Column="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label FontSize="Medium" Text="Wgt" Grid.Column="5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <ListView x:Name="CheckListView" SeparatorColor="Black" SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Grid Padding="0" Margin="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label FontSize="Medium" Text="{Binding Number}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <Label FontSize="Medium" Text="{Binding Name}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <CheckBox CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding ., Converter={StaticResource chkStateCvt}, ConverterParameter=0}" Grid.Column="2" Color="LightGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <CheckBox CheckedChanged="CheckBox_CheckedChanged_1" IsChecked="{Binding ., Converter={StaticResource chkStateCvt}, ConverterParameter=1}" Grid.Column="3" Color="LightGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <CheckBox CheckedChanged="CheckBox_CheckedChanged_2" IsChecked="{Binding ., Converter={StaticResource chkStateCvt}, ConverterParameter=2}" Grid.Column="4" Color="LightGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                        <CheckBox CheckedChanged="CheckBox_CheckedChanged_3" IsChecked="{Binding ., Converter={StaticResource chkStateCvt}, ConverterParameter=3}" Grid.Column="5" Color="LightGreen" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button Text="Back To Home"
+                Clicked="OnBackToHome" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

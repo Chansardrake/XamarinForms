@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Title="{Binding Name}"
+             x:Class="MyPro2.IndividualDetails">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid x:Name="PickerGrid">
+                    <Picker x:Name="DayPicker" SelectedIndexChanged="DayPicker_SelectedIndexChanged"/>
+                    <Button Text="Copy all day details to ClipBoard" Clicked="OnCopyToClipboard" Grid.Row="1"/>
+                    <Button Text="Edit User" Clicked="OnEditUser" Grid.Row="2"/>
+                    <Button Text="Delete User" Clicked="OnDeleteUser" Grid.Row="3"/>
+                </Grid>
+                <Grid x:Name="DayDetails" IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="BreakFast Time"/>
+                    <TimePicker x:Name="breakFastTime" Grid.Row="1"/>
+                    <Label FontSize="Medium" Text="Break Fast" Grid.Row="2"/>
+                    <Entry x:Name="breakFast" Grid.Row="3"/>
+                    <Label FontSize="Medium" Text="Lunch Time" Grid.Row="4"/>
+                    <TimePicker x:Name="lunchTime" Grid.Row="5"/>
+                    <Label FontSize="Medium" Text="Lunch" Grid.Row="6"/>
+                    <Entry x:Name="lunch" Grid.Row="7"/>
+                    <Label FontSize="Medium" Text="Dinner Time" Grid.Row="8"/>
+                    <TimePicker x:Name="dinnerTime" Grid.Row="9"/>
+                    <Label FontSize="Medium" Text="Dinner" Grid.Row="10"/>
+                    <Entry x:Name="dinner" Grid.Row="11"/>
+                    <Label FontSize="Medium" Text="Remarks/Weight" Grid.Row="12"/>
+                    <Entry x:Name="remarks" Grid.Row="13"/>
+                    <Button Text="Cancel" Clicked="OnCancel" HorizontalOptions="Start" Grid.Row="14"/>
+                    <Button Text="Save details" Clicked="OnSaveDetails" HorizontalOptions="End" Grid.Row="14"/>
+                </Grid>
+                <StackLayout x:Name="EditDetails" IsVisible="False">
+                    <Label Text="Name"/>
+                    <Entry x:Name="nameEntry"/>
+                    <Label Text="Age"/>
+                    <Entry x:Name="ageEntry"/>
+                    <Label Text="Weight"/>
+                    <Entry x:Name="wgtEntry"/>
+                    <Button Text="Save Changes" Clicked="OnSaveChanges"/>
+                    <Button Text="Cancel Changes" Clicked="OnCancelChanges"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
